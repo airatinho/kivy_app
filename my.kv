@@ -7,26 +7,76 @@
 #            size : 100,100
 #            size_hint: 0.5, 1
 
+<ItemLabel@Label>:
+    font_size:'25sp'
+    halign:'left'
+    valign:'middle'
+    text_size: self.size
 <Container>
     rows:3
-    padding:50
+    text_input:text_input
+    sald:sald
+    nitr:nitr
+    sugars:sugars
+    start:start
+    time_v: time_v
 
-    text_input: text_input
-    label_widget: label
+    AnchorLayout:
+        size_hint: 1, 0.15
+        TextInput:
 
-    TextInput:
-        id: text_input
-        size_hint:1,0.4
-        multilene:False
-        font_size:40
-    Label:
-        id: label
-        text:"Some text"
-    FloatLayout:
+            id: text_input
+            font_size: '45sp'
+            multiline:False
+            input_type: 'number'
+            input_filter: 'int'
+    GridLayout:
+        cols:2
+        BoxLayout:
+            padding:[30,0,0,0]
+            orientation:'vertical'
+            ItemLabel:
+                text: "Соль"
+            ItemLabel:
+
+                text: "Нитратная соль"
+            ItemLabel:
+
+                text: "Моносахара"
+            ItemLabel:
+
+                text: "Старты"
+            ItemLabel:
+
+                text: "Время засолки"
+
+        BoxLayout:
+            size_hint:0.5,1
+            padding:[30,0,0,0]
+            orientation:'vertical'
+            ItemLabel:
+                id:sald
+                text: "0"
+            ItemLabel:
+                id:nitr
+                text: "0"
+            ItemLabel:
+                id:sugars
+                text: "0"
+            ItemLabel:
+                id: start
+                text: "0"
+            ItemLabel:
+                id: time_v
+                text: "0"
+
+
+    BoxLayout:
+        size_hint:0.9,.15
+        padding:[30,0,30,20]
         Button:
-            size_hint:0.5,0.4
-            pos_hint: {"center_x": .5, "center_y": .1}
+
             font_size:40
-            text: 'Hello, nigga!'
+            text: 'Go!'
             on_release:
-                root.change_text()
+                root.calculate()
