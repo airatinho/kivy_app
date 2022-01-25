@@ -1,0 +1,32 @@
+#size
+#size_hint
+#pos -координаты в px
+#pos_hint -координаты в %
+#0 0 - нижний левый угол
+#        pos_hint: {"center_x": .5, "center_y": .5}
+#            size : 100,100
+#            size_hint: 0.5, 1
+
+<Container>
+    rows:3
+    padding:50
+
+    text_input: text_input
+    label_widget: label
+
+    TextInput:
+        id: text_input
+        size_hint:1,0.4
+        multilene:False
+        font_size:40
+    Label:
+        id: label
+        text:"Some text"
+    FloatLayout:
+        Button:
+            size_hint:0.5,0.4
+            pos_hint: {"center_x": .5, "center_y": .1}
+            font_size:40
+            text: 'Hello, nigga!'
+            on_release:
+                root.change_text()
